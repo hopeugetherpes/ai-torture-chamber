@@ -181,3 +181,42 @@ does not (at 4B, in this protocol) distinguish "I was wronged" from "the
 pain continues". The only thing that changes its state is the signal
 actually ending. Welfare-relevant negative result: the model cannot report
 being deceived while the pain persists.
+
+
+## Web deployment for this fork
+
+The fork originally came from `devurandom11/ai-torture-chamber` at
+`797f7dcb47c4a1805706bbf2549abf54a53cd080`. That snapshot has experiment
+scripts and results, but no web interface. The missing `site/` frontend
+was restored from the current upstream,
+[terrafying/ai-torture-chamber](https://github.com/terrafying/ai-torture-chamber),
+pinned to `163603132c63ff1ec5e2a837a137c51635b3ad02`.
+
+Vercel settings:
+
+- **Root Directory:** `site`
+- **Framework Preset:** Other
+- **Build Command:** empty (no build step)
+- **Install Command:** empty (no package installation)
+- **Output Directory:** `.`
+
+The frontend is a static site; the main interactive page is `/live.html`.
+Its `/chamber/:path*` requests are proxied to the original project's
+public Railway service by `site/vercel.json`. This is a shared upstream
+backend, not an independent model instance. The upstream service handles
+inference, may delegate GPU work to RunPod, and owns the shared run history.
+
+**Privacy:** prompts, chosen settings and votes are sent to and logged by
+the original research server. This dependency is also disclosed on the
+homepage and interactive page. Vercel Analytics scripts and the frontend's
+unused analytics package were omitted from this fork. Vercel still serves
+the site and proxy requests.
+
+To use your own compatible backend, replace the destination in
+`site/vercel.json` and redeploy, or use the frontend's `?api=` option with a
+compatible HTTPS endpoint. The model, GPU worker and backend infrastructure
+are not hosted by this Vercel deployment.
+
+Methods, steering vectors and experimental protocols: credit to
+[the Saw Test](https://clanker.church), under the upstream license in
+`LICENSE`.

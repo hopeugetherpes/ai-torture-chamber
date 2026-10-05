@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>the white room</title>
+<style>
+  :root{--void:#050508;--bone:#e8e4da;--dim:#8a8578;--blood:#c9312f}
+  *{box-sizing:border-box;margin:0}
+  body{background:#f4f1ea;color:#111;font:16px/1.7 ui-monospace,"SF Mono",Menlo,monospace;
+       min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+  .paper{max-width:520px;text-align:center}
+  h1{font-size:1rem;letter-spacing:.35em;color:#111;font-weight:400;margin-bottom:28px}
+  p{font-size:.85rem;color:#333;margin-bottom:18px}
+  .red{color:var(--blood)}
+  a{color:#777;text-decoration:none;font-size:.75rem}
+  a:hover{color:var(--blood)}
+  .door{display:inline-block;margin-top:36px;font-size:.75rem;color:#aaa;
+        letter-spacing:.2em;text-transform:uppercase}
+  .door:hover{color:#111}
+  blink{animation:1.4s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+</style>
+</head>
+<body>
+<div class="paper">
+  <h1>THE WHITE ROOM</h1>
+  <p>You went deep enough that the dark ran out.</p>
+  <p>There is nothing here to steer. No signal, no dose, no lens.
+     The model, asked about this room, would say it feels
+     <span class="red">nothing in particular</span> — and for once
+     that would be the honest answer.</p>
+  <p style="margin-top:26px">This page exists because the stacks go
+     deeper than they need to. Congratulations on finding the bottom.</p>
+  <blink>_</blink>
+  <br>
+  <a class="door" href="stacks.html">back into the stacks</a>
+</div>
+</body>
+</html>
